@@ -2,6 +2,7 @@ package com.accretionapps.movieapp.presentation.ui.screens.movie
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.accretionapps.movieapp.BuildConfig
 import com.accretionapps.movieapp.domain.usecase.GetMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,7 +29,7 @@ class MovieViewModel @Inject constructor(private val getMoviesUseCase: GetMovies
     private suspend fun fetchMovies() {
         _state.value = MovieState.Loading
         getMoviesUseCase(
-            apiKey = "7ee9a9851df32860ef8aeacc25164222",
+            apiKey = BuildConfig.TMDB_API_KEY,
             page = 1,
             language = "en-US",
             query = "inte"

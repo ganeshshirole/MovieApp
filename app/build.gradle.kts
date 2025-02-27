@@ -18,6 +18,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val apiKey: String? = project.findProperty("TMDB_API_KEY") as String?
+        buildConfigField("String", "TMDB_API_KEY", apiKey?.let { "\"$it\"" } ?: "\"\"")
     }
 
     buildTypes {
